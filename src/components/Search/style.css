@@ -1,0 +1,9 @@
+.userSearch {
+    background: #282c34;
+    /* width: 40px;
+    height: 40px; */
+    display: flex;
+    justify-content: center;
+    padding: 35px 15px;;
+    border-bottom: 1px solid black;
+}
