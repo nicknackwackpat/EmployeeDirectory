@@ -14,10 +14,8 @@ export default class Users extends Component {
   handleInputChange = event => {
     const searchTerm = event.target.value.toLowerCase();
     
-    console.log(searchTerm)
-    console.log(this.state)
     const newUserList = this.state.people.filter(person=>{
-      const thisName= person.name.first +person.name.last
+      const thisName = person.name.first + person.name.last;
        return thisName.toLowerCase().includes(searchTerm)
         
     });
@@ -29,8 +27,7 @@ export default class Users extends Component {
   };
 
   sortByFirstName = () => {
-      console.log("weBsorting")
-      const dontMessWithState= new Array(...this.state.people)
+      const dontMessWithState = new Array(...this.state.people)
       
     
     const sortUsers = dontMessWithState.sort((a, b) => {
@@ -43,9 +40,7 @@ export default class Users extends Component {
   
         return 0;
       });
-    // const sortedUsers = this.state.people.map(user => {
-    //   return user.name.first.sort(people);
-    // });
+
     this.setState({ displayPeople: sortUsers })
   };
 
@@ -55,7 +50,6 @@ export default class Users extends Component {
           people: res.data.results,
          displayPeople: res.data.results,
          });
-      console.log(this.state.people);
     });
   }
 
