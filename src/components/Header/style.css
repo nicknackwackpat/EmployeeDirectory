@@ -1,0 +1,11 @@
+header {
+    background: #282c34;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px;;
+}
+
+p {
+    padding-top: 50px;
+}
