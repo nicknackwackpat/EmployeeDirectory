@@ -7,6 +7,7 @@ import Search from "../Search";
 export default class Users extends Component {
   state = {
     search: "",
+    sortOrder: "ASC",
     people: [],
     displayPeople: []
   };
@@ -41,8 +42,40 @@ export default class Users extends Component {
         return 0;
       });
 
+      if (this.state.sortOrder === "DESC") {
+        sortUsers.reverse();
+        this.setState({ sortOrder: "ASC" });
+      } else {
+        this.setState({ sortOrder: "DESC" });
+      }
+
     this.setState({ displayPeople: sortUsers })
   };
+
+  sortByLastName = () => {
+    const dontMessWithState = new Array(...this.state.people)
+    
+  
+  const sortUsers = dontMessWithState.sort((a, b) => {
+      if (b.name.last > a.name.last) {
+        return -1;
+      }
+      if (a.name.last > b.name.last) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    if (this.state.sortOrder === "DESC") {
+      sortUsers.reverse();
+      this.setState({ sortOrder: "ASC" });
+    } else {
+      this.setState({ sortOrder: "DESC" });
+    }
+
+  this.setState({ displayPeople: sortUsers })
+};
 
   componentDidMount() {
     API.people().then(res => {
@@ -63,7 +96,7 @@ export default class Users extends Component {
             <tr>
               <th>Photo</th>
               <th onClick={this.sortByFirstName}>First Name</th>
-              <th>Last Name</th>
+              <th onClick={this.sortByLastName}>Last Name</th>
               <th>Phone</th>
               <th>Email</th>
               <th>Date of Birth</th>

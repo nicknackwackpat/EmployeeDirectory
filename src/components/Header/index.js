@@ -6,7 +6,7 @@ function Header() {
   return (
       <header className="header">
         <h1>User Directory</h1>
-        <p>A list of users generated using the https://randomuser.me API.</p>
+        {/* <p>A list of users generated using the https://randomuser.me API.</p> */}
       </header>
   );
 }
